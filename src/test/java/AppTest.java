@@ -12,4 +12,10 @@ public class AppTest {
         assertEquals("lo", LongestCommonPrefix.run(new String[] {"loo", "loa", "lob"} ));
         assertEquals("", LongestCommonPrefix.run(new String[] {"a", "", "b"} ));
     }
+
+    @Test public void testNumberComplement() {
+        assertEquals(2, NumberComplement.run(5));
+        assertEquals(0, NumberComplement.run(1));
+        assertEquals(15, NumberComplement.run(16));
+    }
 }

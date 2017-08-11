@@ -7,7 +7,6 @@ Write a function to find the longest common prefix string amongst an array of st
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.stream.Stream;
 
 public class LongestCommonPrefix {
 
