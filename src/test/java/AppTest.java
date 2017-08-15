@@ -18,4 +18,14 @@ public class AppTest {
         assertEquals(0, NumberComplement.run(1));
         assertEquals(15, NumberComplement.run(16));
     }
+
+    @Test public void testRelativeRank() {
+        String[] expVal = new String[]{"Gold Medal", "5", "Bronze Medal", "Silver Medal", "4"};
+        assertArrayEquals(expVal, RelativeRank.run(new int[] {10, 3, 8, 9, 4}));
+    }
+
+    @Test public void testFirstUniqueCharacter() {
+        assertEquals(2, FirstUniqueCharacter.run("loveleetcode"));
+        assertEquals(-1, FirstUniqueCharacter.run("lool"));
+    }
 }
