@@ -18,10 +18,9 @@ Note: You may assume the string contain only lowercase letters.
 
 public class FirstUniqueCharacter {
     public static int run(String s) {
-        char[] charset = s.toCharArray();
         for(int i = 0; i < s.length(); i++)
         {
-            char c = charset[i];
+            char c = s.charAt(i);
             if(s.indexOf(c) == s.lastIndexOf(c))
             {
                 return i;
