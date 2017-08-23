@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import leetcode.*;
+import leetcode.Utils.TreeNode;
 
 public class AppTest {
     @Test
@@ -46,5 +47,13 @@ public class AppTest {
         assertArrayEquals(new String[]{}, PossibleBinary.run(0));
         assertArrayEquals(new String[]{"10", "00", "11", "01"}, PossibleBinary.run(2));
         assertArrayEquals(new String[]{"110", "010", "100", "000", "111", "011", "101", "001"}, PossibleBinary.run(3));
+    }
+
+    @Test
+    public void testMergeTrees() {
+        TreeNode node1 = Utils.arrayTotree(new int[]{1,2,3,4,5,6,7});
+        TreeNode node2 = Utils.arrayTotree(new int[]{1,2,3,4,5,6,7});
+        TreeNode node3 = MergeTrees.run(node1, node2);
+        assertArrayEquals(new int[]{2,4,6,8,10,12,14}, Utils.treeToArray(node3));
     }
 }
