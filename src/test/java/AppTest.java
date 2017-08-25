@@ -56,4 +56,34 @@ public class AppTest {
         TreeNode node3 = MergeTrees.run(node1, node2);
         assertArrayEquals(new int[]{2,4,6,8,10,12,14}, Utils.treeToArray(node3));
     }
+
+    @Test
+    public void testStackToQueue() {
+        StackToQueue queue = new StackToQueue();
+        assertEquals(true, queue.empty());
+        queue.push(1);
+        assertEquals(false, queue.empty());
+        assertEquals(1, queue.peek());
+        queue.push(2);
+        queue.push(3);
+        assertEquals(1, queue.peek());
+        assertEquals(1, queue.pop());
+        assertEquals(2, queue.pop());
+        assertEquals(3, queue.pop());
+    }
+
+    @Test
+    public void testQueueToStack() {
+        QueueToStack stack = new QueueToStack();
+        assertEquals(true, stack.empty());
+        stack.push(1);
+        assertEquals(false, stack.empty());
+        assertEquals(1, stack.top());
+        stack.push(2);
+        stack.push(3);
+        assertEquals(3, stack.top());
+        assertEquals(3, stack.pop());
+        assertEquals(2, stack.pop());
+        assertEquals(1, stack.pop());
+    }
 }
