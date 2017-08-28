@@ -9,6 +9,10 @@ import static org.junit.Assert.*;
 import leetcode.*;
 import leetcode.Utils.TreeNode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class AppTest {
     @Test
     public void testLongestCommonPrefix() {
@@ -51,10 +55,10 @@ public class AppTest {
 
     @Test
     public void testMergeTrees() {
-        TreeNode node1 = Utils.arrayTotree(new int[]{1,2,3,4,5,6,7});
-        TreeNode node2 = Utils.arrayTotree(new int[]{1,2,3,4,5,6,7});
+        TreeNode node1 = Utils.arrayTotree(new int[]{1, 2, 3, 4, 5, 6, 7});
+        TreeNode node2 = Utils.arrayTotree(new int[]{1, 2, 3, 4, 5, 6, 7});
         TreeNode node3 = MergeTrees.run(node1, node2);
-        assertArrayEquals(new int[]{2,4,6,8,10,12,14}, Utils.treeToArray(node3));
+        assertArrayEquals(new int[]{2, 4, 6, 8, 10, 12, 14}, Utils.treeToArray(node3));
     }
 
     @Test
@@ -85,5 +89,21 @@ public class AppTest {
         assertEquals(3, stack.pop());
         assertEquals(2, stack.pop());
         assertEquals(1, stack.pop());
+    }
+
+    @Test
+    public void testPermutation() {
+        // double brace initialization
+        // outer for creates an anonymous class
+        // inner for construct object
+        List<List<Integer>> permutes = new ArrayList<List<Integer>>(){{
+            add(Arrays.asList(1,2,3));
+            add(Arrays.asList(1,3,2));
+            add(Arrays.asList(2,1,3));
+            add(Arrays.asList(2,3,1));
+            add(Arrays.asList(3,1,2));
+            add(Arrays.asList(3,2,1));
+        }};
+        assertEquals(permutes, Permutation.run(new int[]{1, 2, 3}));
     }
 }
