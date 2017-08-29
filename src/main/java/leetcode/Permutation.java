@@ -38,4 +38,27 @@ public class Permutation {
         }
         return res;
     }
+
+    public List<List<Integer>> run2(int[] nums) {
+        List<List<Integer>> list = new ArrayList<>();
+        // Arrays.sort(nums); // not necessary
+        backtrack(list, new ArrayList<>(), nums);
+        return list;
+    }
+    /*
+     * @list: List<List<Integer>> store the result
+     * @tmpList: List<Integer> construct a single result
+     */
+    private void backtrack(List<List<Integer>> list, List<Integer> tempList, int [] nums){
+        if(tempList.size() == nums.length){
+            list.add(new ArrayList<>(tempList));
+        } else{
+            for (int num : nums) {
+                if (tempList.contains(num)) continue; // element already exists, skip
+                tempList.add(num);
+                backtrack(list, tempList, nums);
+                tempList.remove(tempList.size() - 1);
+            }
+        }
+    }
 }
