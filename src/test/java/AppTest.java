@@ -96,20 +96,52 @@ public class AppTest {
         // double brace initialization
         // outer for creates an anonymous class
         // inner for construct object
-        List<List<Integer>> permutes = new ArrayList<List<Integer>>(){{
-            add(Arrays.asList(1,2,3));
-            add(Arrays.asList(1,3,2));
-            add(Arrays.asList(2,1,3));
-            add(Arrays.asList(2,3,1));
-            add(Arrays.asList(3,1,2));
-            add(Arrays.asList(3,2,1));
+        List<List<Integer>> permutes = new ArrayList<List<Integer>>() {{
+            add(Arrays.asList(1, 2, 3));
+            add(Arrays.asList(1, 3, 2));
+            add(Arrays.asList(2, 1, 3));
+            add(Arrays.asList(2, 3, 1));
+            add(Arrays.asList(3, 1, 2));
+            add(Arrays.asList(3, 2, 1));
         }};
         assertEquals(permutes, Permutation.run(new int[]{1, 2, 3}));
     }
 
     @Test
     public void testDiameterOfBinaryTree() {
-        TreeNode tree = Utils.arrayTotree(new int[]{1,2,3,4,5,6,7,8});
+        TreeNode tree = Utils.arrayTotree(new int[]{1, 2, 3, 4, 5, 6, 7, 8});
         assertEquals(5, DiameterOfBinaryTree.run(tree));
+    }
+
+    @Test
+    public void testGenerateParenthesis() {
+        List<String> paren1 = new ArrayList<String>() {{
+            add("()");
+        }};
+        List<String> paren2 = new ArrayList<String>() {{
+            add("(())");
+            add("()()");
+        }};
+        List<String> paren3 = new ArrayList<String>() {{
+            add("((()))");
+            add("(()())");
+            add("(())()");
+            add("()(())");
+            add("()()()");
+        }};
+        assertEquals(paren1, GenerateParenthesis.run(1));
+        assertEquals(paren2, GenerateParenthesis.run(2));
+        assertEquals(paren3, GenerateParenthesis.run(3));
+    }
+
+    @Test
+    public void testReverseWords() {
+        String s = "Origin";
+        StringBuilder sb = new StringBuilder("Origin");
+        ReverseWords.callByValue(s, sb);
+        assertEquals("Origin", s);
+        assertEquals("OriginChanged", sb.toString());
+        assertEquals("s'teL ekat edoCteeL tsetnoc", ReverseWords.run("Let's take LeetCode contest"));
+        assertEquals("s'teL ekat edoCteeL tsetnoc", ReverseWords.run("Let's take LeetCode contest"));
     }
 }
