@@ -4,13 +4,16 @@
 
 import org.junit.Test;
 
+import static leetcode.Utils.*;
 import static org.junit.Assert.*;
 
 import leetcode.*;
 import leetcode.Utils.TreeNode;
 
+import javax.rmi.CORBA.Util;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class AppTest {
@@ -55,10 +58,10 @@ public class AppTest {
 
     @Test
     public void testMergeTrees() {
-        TreeNode node1 = Utils.arrayTotree(new int[]{1, 2, 3, 4, 5, 6, 7});
-        TreeNode node2 = Utils.arrayTotree(new int[]{1, 2, 3, 4, 5, 6, 7});
+        TreeNode node1 = arrayTotree(new int[]{1, 2, 3, 4, 5, 6, 7});
+        TreeNode node2 = arrayTotree(new int[]{1, 2, 3, 4, 5, 6, 7});
         TreeNode node3 = MergeTrees.run(node1, node2);
-        assertArrayEquals(new int[]{2, 4, 6, 8, 10, 12, 14}, Utils.treeToArray(node3));
+        assertArrayEquals(new int[]{2, 4, 6, 8, 10, 12, 14}, treeToArray(node3));
     }
 
     @Test
@@ -109,7 +112,7 @@ public class AppTest {
 
     @Test
     public void testDiameterOfBinaryTree() {
-        TreeNode tree = Utils.arrayTotree(new int[]{1, 2, 3, 4, 5, 6, 7, 8});
+        TreeNode tree = arrayTotree(new int[]{1, 2, 3, 4, 5, 6, 7, 8});
         assertEquals(5, DiameterOfBinaryTree.run(tree));
     }
 
@@ -143,5 +146,45 @@ public class AppTest {
         assertEquals("OriginChanged", sb.toString());
         assertEquals("s'teL ekat edoCteeL tsetnoc", ReverseWords.run("Let's take LeetCode contest"));
         assertEquals("s'teL ekat edoCteeL tsetnoc", ReverseWords.run("Let's take LeetCode contest"));
+    }
+
+    @Test
+    public void testConvertBST() {
+        TreeNode src = arrayTotree(new int[]{4, 2, 6, 1, 3, 5, 7});
+        TreeNode tar = arrayTotree(new int[]{22, 27, 13, 28, 25, 18, 7});
+        assertArrayEquals(treeToArray(tar), treeToArray(ConvertBST.run(src)));
+    }
+
+    @Test
+    public void testSubTree() {
+        TreeNode tree = arrayTotree(new int[]{4, 2, 6, 1, 3, 5, 7, 8});
+        TreeNode subtree = arrayTotree(new int[]{6, 5, 7});
+        TreeNode nonSubtree = arrayTotree(new int[]{2, 1, 3});
+        assertEquals(true, SubTree.run(tree, subtree));
+        assertEquals(false, SubTree.run(tree, nonSubtree));
+    }
+
+    @Test
+    public void testPalindromeLink() {
+        ListNode link1 = Utils.arrayToList(new int[]{1, 2, 3, 2, 1});
+        ListNode link2 = Utils.arrayToList(new int[]{1, 2, 3, 3, 2, 1});
+        ListNode link3 = Utils.arrayToList(new int[]{1, 2, 3, 4, 2, 1});
+        assertEquals(true, PalindromeLink.run(link1));
+        assertEquals(true, PalindromeLink.run(link2));
+        assertEquals(false, PalindromeLink.run(link3));
+    }
+
+    @Test
+    public void testIntersectionNode() {
+        ListNode link1 = Utils.arrayToList(new int[]{1, 2, 3});
+        ListNode link2 = Utils.arrayToList(new int[]{1, 2});
+        ListNode link3 = Utils.arrayToList(new int[]{4, 5});
+        ListNode link4 = Utils.arrayToList(new int[]{6, 7});
+        assertArrayEquals(new int[]{1,2,3,4,5}, Utils.listToArray(link1.add(link3)));
+        assertArrayEquals(new int[]{1,2,4,5}, Utils.listToArray(link2.add(link3)));
+        assertEquals(link3, IntersectionNode.run(link1, link2));
+        assertEquals(link3, IntersectionNode.run(link1, link3));
+        assertEquals(link3, IntersectionNode.run(link2, link3));
+        assertEquals(null, IntersectionNode.run(link1, link4));
     }
 }
